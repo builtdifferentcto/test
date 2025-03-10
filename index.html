@@ -235,138 +235,57 @@ h1, h2 {
             50% { border-color: transparent; }
         }
          /* Responsivity */
-        @media (max-width: 1024px) {
-            .navbar {
-                padding: 20px;
-                justify-content: space-evenly;
-            }
-
-            .navbar a {
-                margin: 5px;
-                font-size: 1.1em;
-            }
-
-            .hero {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-
-            .hero .image img {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .hero .text {
-                text-align: center;
-                font-size: 1.1em;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
+       /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: cyan;
+            transition: all 0.3s ease-in-out;
         }
 
+        .navbar-links {
+            display: flex;
+        }
+
+        /* Mobile menu */
+        .navbar-links.active {
+            display: block;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
-            /* Navbar adjustments for mobile */
-            .navbar {
+            .navbar-links {
+                display: none;
+                width: 100%;
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                padding: 20px;
             }
 
-            .navbar a {
-                margin: 10px 0;
-            }
-
-            /* Hero section adjustments */
-            .hero {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-
-            .hero .image img {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .hero .text {
-                font-size: 1.1em;
-                text-align: center;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            /* Socials font size adjustments */
-            .socials a {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-
-            /* Additional margin adjustments */
-            h1, h2 {
-                margin-bottom: 10px;
+            .hamburger {
+                display: flex;
             }
         }
 
-        @media (max-width: 480px) {
-            .hero .image img {
-                max-width: 90%;
-            }
-
-            .hero .text {
-                font-size: 1em;
-            }
-
-            .full-section ul {
-                font-size: 1em;
-                padding-left: 10px;
-            }
-
-            .socials a {
-                font-size: 0.9em;
-            }
-
-            /* Mobile hamburger menu */
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.8);
-                position: absolute;
-                top: 60px;
-                left: 0;
-                padding: 20px;
-                text-align: center;
-                z-index: 999;
-            }
-            .nav-links a {
-                margin: 10px 0;
-                font-size: 1.2em;
-            }
-
-            .navbar.active .nav-links {
-                display: flex;
-            }
-            .navbar.active .menu-toggle span:nth-child(1) {
-                transform: rotate(45deg);
-                position: relative;
-                top: 6px;
-            }
-            .navbar.active .menu-toggle span:nth-child(2) {
-                opacity: 0;
-            }
-            .navbar.active .menu-toggle span:nth-child(3) {
-                transform: rotate(-45deg);
-                position: relative;
-                top: -6px;
-            }
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            padding: 80px 20px;
+            font-size: 1em;
+            text-align: center;
         }
     </style>
 </head>
@@ -485,9 +404,10 @@ document.addEventListener("DOMContentLoaded", function() {
             sections.forEach(section => observer.observe(section));
         });
 
+         // Funzione per mostrare/nascondere il menu hamburger
         function toggleMenu() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('active');
+            const navbarLinks = document.querySelector('.navbar-links');
+            navbarLinks.classList.toggle('active');
         }
     </script>
 </body>
