@@ -234,7 +234,41 @@ h1, h2 {
         @keyframes blink {
             50% { border-color: transparent; }
         }
- /* Responsivity */
+        /* Responsivity */
+        @media (max-width: 1024px) {
+            /* Adjust navbar for tablets */
+            .navbar {
+                padding: 20px;
+                justify-content: space-evenly;
+            }
+
+            .navbar a {
+                margin: 5px;
+                font-size: 1.1em;
+            }
+
+            /* Adjust hero section for smaller screens */
+            .hero {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            .hero .image img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .hero .text {
+                text-align: center;
+                font-size: 1.1em;
+            }
+
+            /* Adjust section padding */
+            .section {
+                padding: 60px 20px;
+            }
+        }
+
         @media (max-width: 768px) {
             /* Navbar adjustments for mobile */
             .navbar {
@@ -289,19 +323,17 @@ h1, h2 {
         }
 
         @media (max-width: 480px) {
-            .hero {
-                padding: 30px 15px;
-            }
-
+            /* Hero image size */
             .hero .image img {
-                max-width: 100%;
+                max-width: 90%;
             }
 
-            /* Reduce font size further for very small screens */
+            /* Text adjustments */
             .hero .text {
                 font-size: 1em;
             }
 
+            /* Reduce font size further for very small screens */
             .full-section ul {
                 font-size: 1em;
                 padding-left: 10px;
